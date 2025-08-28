@@ -1,0 +1,21 @@
+app = "mori-tea-frontend"
+primary_region = "ams"
+
+[build]
+dockerfile = "Dockerfile"
+
+[http_service]
+internal_port = 8080
+force_https = true
+auto_stop_machines = true
+auto_start_machines = true
+
+[[http_service.checks]]
+grace_period = "10s"
+interval = "30s" 
+method = "GET"
+timeout = "5s"
+path = "/"
+
+[env]
+NODE_ENV = "production"
